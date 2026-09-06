@@ -526,15 +526,15 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
             return (
               <div
                 key={player.id}
-                className={`group flex items-center justify-between py-2 sm:py-2.5 px-2 rounded-xl transition-colors ${
-                  isCurrent ? 'bg-amber-950/25 border border-amber-500/20' : 'hover:bg-white/[0.02]'
-                }`}
+                className={`group flex items-center justify-between py-3 sm:py-3.5 px-3 rounded-2xl transition-all border ${
+                  isCurrent ? 'bg-amber-950/30 border-amber-500/40 shadow-lg' : 'hover:bg-white/[0.03] border-transparent'
+                } mb-1.5`}
               >
                 {/* Left: Round Illustrated Victorian Avatar + Player Info */}
-                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1 mr-2">
                   <div
                     className={`relative cursor-pointer shrink-0 rounded-full group/avatar transition-transform hover:scale-105 active:scale-95 ${
-                      isCurrent ? 'ring-2 ring-amber-400 shadow-[0_0_12px_rgba(245,158,11,0.5)]' : 'ring-1 ring-amber-500/30'
+                      isCurrent ? 'ring-2 ring-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.6)]' : 'ring-1 ring-amber-500/40'
                     }`}
                     onClick={() => isCurrent && setShowCharModal(true)}
                     title={isCurrent ? 'Clique para trocar de personagem' : undefined}
@@ -546,19 +546,12 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
                       glow={isCurrent}
                       border={false}
                     />
-                    {isCurrent && (
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/avatar:opacity-100 rounded-full flex items-center justify-center transition-opacity">
-                        <span className="text-[7.5px] font-serif font-black text-amber-300 uppercase tracking-tighter text-center">
-                          TROCAR
-                        </span>
-                      </div>
-                    )}
                   </div>
 
-                  <div className="flex flex-col min-w-0">
-                    <div className="flex items-center gap-1.5">
+                  <div className="flex flex-col min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5 flex-wrap">
                       {isCurrent && isEditingName ? (
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-1 w-full sm:w-auto">
                           <input
                             type="text"
                             value={nameInput}
@@ -569,29 +562,21 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
                               if (e.key === 'Enter') handleSaveName();
                               if (e.key === 'Escape') setIsEditingName(false);
                             }}
-                            className="px-2 py-0.5 rounded bg-black/90 border border-amber-400 text-amber-200 text-xs font-serif font-bold focus:outline-none w-32 sm:w-44"
+                            className="px-2 py-1 rounded bg-black/90 border border-amber-400 text-amber-200 text-xs font-serif font-bold focus:outline-none flex-1 sm:w-44"
                             placeholder="Seu nome..."
                           />
                           <button
                             type="button"
                             onClick={handleSaveName}
-                            className="p-1 rounded bg-amber-700 hover:bg-amber-600 text-white"
+                            className="p-1.5 rounded bg-amber-700 hover:bg-amber-600 text-white shadow-md"
                             title="Salvar nome"
                           >
-                            <Check className="w-3 h-3" />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => setIsEditingName(false)}
-                            className="p-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300"
-                            title="Cancelar"
-                          >
-                            <X className="w-3 h-3" />
+                            <Check className="w-3.5 h-3.5" />
                           </button>
                         </div>
                       ) : (
                         <>
-                          <span className="font-serif font-bold text-sm sm:text-[15px] text-amber-100/95 tracking-wide truncate">
+                          <span className="font-serif font-bold text-[14px] sm:text-[16px] text-amber-100/95 tracking-wide truncate max-w-[120px] sm:max-w-none">
                             {displayName}
                           </span>
                           {isCurrent && onUpdatePlayerName && (
@@ -601,60 +586,33 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
                                 setNameInput(player.name);
                                 setIsEditingName(true);
                               }}
-                              className="ml-1 px-1.5 py-0.5 rounded bg-amber-950/70 border border-amber-500/40 text-amber-300 hover:text-white hover:border-amber-300 transition-all text-[9.5px] font-mono flex items-center gap-1 shadow-sm cursor-pointer"
+                              className="p-1 rounded-lg bg-amber-950/70 border border-amber-500/40 text-amber-300 hover:text-white transition-all shadow-sm cursor-pointer shrink-0"
                               title="Alterar seu nome"
                             >
-                              <Edit3 className="w-2.5 h-2.5" />
-                              <span>Mudar nome</span>
+                              <Edit3 className="w-3 h-3" />
                             </button>
                           )}
                         </>
                       )}
                       {isDesignatedOracle && (
-                        <span className="px-1.5 py-0.2 rounded-full bg-amber-950 border border-amber-400 text-amber-300 text-[8px] sm:text-[9px] font-serif font-black tracking-wider uppercase flex items-center gap-0.5 shrink-0 shadow-[0_0_8px_rgba(245,158,11,0.5)]">
+                        <span className="px-1.5 py-0.5 rounded-full bg-amber-950 border border-amber-400 text-amber-300 text-[8px] sm:text-[9px] font-serif font-black tracking-wider uppercase flex items-center gap-0.5 shrink-0 shadow-[0_0_10px_rgba(245,158,11,0.6)]">
                           <Eye className="w-2.5 h-2.5 text-amber-400 inline" />
                           <span>ORÁCULO</span>
                         </span>
                       )}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] sm:text-[11px] font-serif uppercase tracking-[0.15em] text-amber-400/70 font-semibold truncate">
+                    <div className="flex items-center gap-2 mt-0.5">
+                      <span className="text-[10px] sm:text-[11px] font-serif uppercase tracking-[0.12em] text-amber-400/80 font-bold truncate">
                         {roleSubtitle}
                       </span>
-                      {isCurrent && (
-                        <button
-                          type="button"
-                          onClick={() => setShowCharModal(true)}
-                          className="text-[9px] text-amber-400 hover:text-amber-200 underline font-serif font-bold"
-                        >
-                          [Trocar]
-                        </button>
-                      )}
                     </div>
                   </div>
                 </div>
 
                 {/* Right: Actions, Crown, Oracle Toggle, Ready Status */}
-                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                  {/* Host can designate this player as oracle */}
-                  {isHost && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        soundEngine.playClick();
-                        const nextOracleId = isDesignatedOracle ? '' : player.id;
-                        if (onDesignateOracle) onDesignateOracle(nextOracleId);
-                        if (onUpdateSettings) onUpdateSettings({ designatedOraclePlayerId: nextOracleId, oracleSelectionMode: nextOracleId ? 'custom' : 'random' });
-                      }}
-                      className={`p-1 rounded-lg border transition-all text-xs ${
-                        isDesignatedOracle
-                          ? 'bg-amber-900/80 border-amber-400 text-amber-200'
-                          : 'bg-black/40 border-zinc-700/50 text-zinc-500 hover:text-amber-300 hover:border-amber-500/40 opacity-40 group-hover:opacity-100'
-                      }`}
-                      title={isDesignatedOracle ? 'Definido como Oráculo (clique para remover)' : 'Designar como Oráculo'}
-                    >
-                      <Eye className="w-3 h-3" />
-                    </button>
+                <div className="flex items-center gap-2 shrink-0">
+                  {isLeader && (
+                    <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 fill-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
                   )}
 
                   {isCurrent ? (
@@ -664,19 +622,27 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
                         soundEngine.playClick();
                         onToggleReady();
                       }}
-                      className={`px-3 py-1 rounded-xl font-serif text-[10px] sm:text-xs font-black tracking-wider uppercase transition-all shadow-md active:scale-95 border ${
+                      className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl font-serif text-[10px] sm:text-xs font-black tracking-wider uppercase transition-all shadow-lg active:scale-95 border min-w-[80px] text-center ${
                         player.isReady
-                          ? 'bg-gradient-to-r from-emerald-800 to-emerald-950 border-emerald-400 text-emerald-200 shadow-[0_0_10px_rgba(16,185,129,0.5)]'
-                          : 'bg-gradient-to-r from-[#3d1808] to-[#1f0b04] border-amber-500/50 text-amber-200 hover:border-amber-400'
+                          ? 'bg-gradient-to-r from-emerald-800 to-emerald-950 border-emerald-400 text-emerald-200 shadow-[0_0_15px_rgba(16,185,129,0.5)]'
+                          : 'bg-gradient-to-r from-[#3d1808] to-[#1f0b04] border-amber-500/60 text-amber-200 hover:border-amber-400'
                       }`}
                     >
-                      {player.isReady ? '✓ PRONTO' : 'FICAR PRONTO'}
+                      {player.isReady ? 'PRONTO' : 'PRONTO?'}
                     </button>
                   ) : player.isReady ? (
-                    <span className="px-2 py-0.5 rounded-lg bg-emerald-950/80 border border-emerald-500/50 text-[10px] sm:text-xs font-serif font-black text-emerald-400 tracking-wider shadow-[0_0_8px_rgba(16,185,129,0.4)] uppercase">
-                      ✓ PRONTO
-                    </span>
-                  ) : null}
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-950/80 border border-emerald-500/60 shadow-md">
+                      <Check className="w-3 h-3 text-emerald-400" />
+                      <span className="text-[10px] sm:text-xs font-serif font-black text-emerald-400 tracking-widest uppercase">
+                        PRONTO
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="w-2 h-2 rounded-full bg-zinc-800 animate-pulse mr-2" />
+                  )}
+                </div>
+              </div>
+            );
 
                   {isLeader && (
                     <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 fill-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
