@@ -92,7 +92,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   };
 
   return (
-    <div className="relative h-screen max-h-screen w-full flex flex-col justify-between items-center text-[#e8dfd8] overflow-hidden select-none px-2 py-1.5 sm:py-2">
+    <div className="relative min-h-[100dvh] w-full flex flex-col justify-between items-center text-[#e8dfd8] overflow-hidden select-none px-2 py-1.5 sm:py-2">
       {/* Background: O Códice da Morte (Livro Ancestral e Caveira na Biblioteca) */}
       <div className="fixed inset-0 z-0 bg-[#070404] overflow-hidden pointer-events-none">
         <img
@@ -237,7 +237,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
           {/* Grimoire Cover Emblem */}
           <div className="relative flex flex-col items-center justify-center group cursor-default">
-            <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden p-[2px] bg-gradient-to-b from-[#e5b358] via-[#6e4e1d] to-[#1a1205] shadow-[0_0_35px_rgba(229,179,88,0.25)] transition-transform duration-500 hover:scale-105">
+            <div className="relative w-20 h-20 sm:w-36 sm:h-36 rounded-2xl overflow-hidden p-[2px] bg-gradient-to-b from-[#e5b358] via-[#6e4e1d] to-[#1a1205] shadow-[0_0_35px_rgba(229,179,88,0.25)] transition-transform duration-500 hover:scale-105">
               <div className="w-full h-full rounded-2xl overflow-hidden bg-black flex items-center justify-center">
                 <img
                   src={codiceEmblemaCaveiraImg}

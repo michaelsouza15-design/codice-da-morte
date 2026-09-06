@@ -1133,7 +1133,7 @@ function GameApp() {
     return (
       <div
         id="app-root-home"
-        className="app-container h-screen max-h-screen font-serif flex flex-col justify-between selection:bg-[#ff4444] selection:text-white relative overflow-hidden transition-colors duration-300 bg-cover bg-center"
+        className="app-container min-h-[100dvh] font-serif flex flex-col justify-between selection:bg-[#ff4444] selection:text-white relative overflow-hidden transition-colors duration-300 bg-cover bg-center"
         style={{ backgroundImage: `url(${codiceMorteLivroImg})` }}
       >
         {/* Main Floating Gothic Home Screen matching the image */}

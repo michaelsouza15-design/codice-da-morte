@@ -204,6 +204,21 @@ export const MethodCard: React.FC<MethodCardProps> = ({
 
       {/* CENTRAL GOTHIC ARTWORK CONTAINER */}
       <div className="relative z-10 flex-1 my-1 rounded-md overflow-hidden border border-amber-500/40 bg-black/90 shadow-inner flex items-center justify-center min-h-0">
+        {/* Try to load default image from public folder first, fallback to SVG illustration */}
+        <img
+          src={`/metodos/${method.id}.jpg`}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-100"
+          onError={(e) => {
+            // If .jpg fails, try .png (some files are png in your public folder)
+            const target = e.target as HTMLImageElement;
+            if (target.src.endsWith('.jpg')) {
+              target.src = `/metodos/${method.id}.png`;
+            } else {
+              target.style.display = 'none';
+            }
+          }}
+        />
         <MethodIllustration id={method.id} category={method.category} name={method.name} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none" />
         <div className="absolute inset-0 border border-white/10 rounded-md pointer-events-none" />
@@ -350,6 +365,19 @@ export const ObjectCard: React.FC<ObjectCardProps> = ({
 
       {/* CENTRAL GOTHIC ARTWORK CONTAINER */}
       <div className="relative z-10 flex-1 my-1 rounded-md overflow-hidden border border-amber-500/40 bg-black/90 shadow-inner flex items-center justify-center min-h-0">
+        <img
+          src={`/objetos/${object.id}.jpg`}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-100"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            if (target.src.endsWith('.jpg')) {
+              target.src = `/objetos/${object.id}.png`;
+            } else {
+              target.style.display = 'none';
+            }
+          }}
+        />
         <ObjectIllustration id={object.id} category={object.category} name={object.name} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none" />
         <div className="absolute inset-0 border border-white/10 rounded-md pointer-events-none" />
@@ -950,6 +978,15 @@ export const EventCard: React.FC<{
 
       {/* CENTRAL ARTWORK */}
       <div className="relative z-10 h-22 sm:h-24 my-1.5 rounded-lg overflow-hidden border border-red-500/30 bg-black/90 shadow-inner flex items-center justify-center">
+        <img
+          src={`/eventos/${event.id}_${event.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '_')}_v2.png`}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+          }}
+        />
         {customArt ? (
           <img src={customArt} alt={event.name} className="w-full h-full object-cover animate-fade-in" />
         ) : (
@@ -1141,6 +1178,15 @@ export const AbilityCard: React.FC<{
 
       {/* CENTRAL MYSTICAL ARTWORK */}
       <div className="relative z-10 h-22 sm:h-24 my-1.5 rounded-lg overflow-hidden border border-emerald-500/30 bg-black/90 shadow-inner flex items-center justify-center">
+        <img
+          src={`/habilidades/${ability.id}_${ability.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '_')}.png`}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+          }}
+        />
         {customArt ? (
           <img src={customArt} alt={ability.name} className="w-full h-full object-cover animate-fade-in" />
         ) : (

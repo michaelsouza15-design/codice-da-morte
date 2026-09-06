@@ -1184,8 +1184,8 @@ export const InvestigationRoomView: React.FC<InvestigationRoomViewProps> = ({
         <aside
           className={`transition-all duration-300 shrink-0 bg-gradient-to-b from-[#120804]/95 via-[#0b0402]/95 to-[#080201]/95 border-r border-amber-900/30 flex flex-col justify-between z-20 ${
             isPlayersPanelCollapsed
-              ? 'w-full lg:w-48 p-2'
-              : 'w-full lg:w-56 xl:w-64 p-3'
+              ? 'w-full lg:w-48 p-2 h-auto lg:h-full'
+              : 'w-full lg:w-56 xl:w-64 p-3 h-[180px] sm:h-[220px] lg:h-full'
           }`}
         >
           <div>
@@ -1239,9 +1239,8 @@ export const InvestigationRoomView: React.FC<InvestigationRoomViewProps> = ({
                   Ver todos
                 </button>
               </div>
-            ) : (
               /* Players List */
-              <div className="space-y-1.5 max-h-[260px] sm:max-h-[300px] lg:max-h-[380px] overflow-y-auto pr-1 no-scrollbar">
+              <div className="space-y-1.5 max-h-[110px] sm:max-h-[150px] lg:max-h-[380px] overflow-y-auto pr-1 no-scrollbar">
                 {room.players.map((player, idx) => {
                   const char = CHARACTERS.find((c) => c.id === player.characterId);
                   const isMe = player.id === myPlayerId;

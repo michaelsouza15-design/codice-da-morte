@@ -95,16 +95,24 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
 
   // Generate QR Code on load or room change
   useEffect(() => {
-    QRCode.toDataURL(roomUrl, {
-      width: 300,
-      margin: 2,
-      color: {
-        dark: '#ffd700',
-        light: '#0c0603',
-      },
-    })
-      .then((url) => setQrDataUrl(url))
-      .catch((err) => console.error('Error generating QR Code', err));
+    if (!roomUrl) return;
+    try {
+      QRCode.toDataURL(roomUrl, {
+        width: 300,
+        margin: 2,
+        color: {
+          dark: '#ffd700',
+          light: '#0c0603',
+        },
+      })
+        .then((url) => setQrDataUrl(url))
+        .catch((err) => {
+          console.warn('Erro ao gerar QR Code (não fatal):', err);
+          setQrDataUrl(''); // Evita travar a tela
+        });
+    } catch (e) {
+      console.warn('Erro na biblioteca de QR Code:', e);
+    }
   }, [roomUrl]);
 
   const copyRoomCode = () => {
@@ -138,6 +146,26 @@ export const LobbyView: React.FC<LobbyViewProps> = ({
     soundEngine.playGavelStrike();
     onStartGame();
   };
+
+  if (!myPlayer) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-black text-amber-500 font-serif z-[200]">
+        <div className="text-center space-y-4 p-6 glass-ui rounded-3xl border border-amber-500/30">
+          <Skull className="w-16 h-16 mx-auto animate-pulse text-red-500" />
+          <h2 className="text-2xl font-black tracking-widest uppercase">Invocando Investigadores...</h2>
+          <p className="text-sm text-zinc-400 max-w-xs mx-auto">
+            Aguardando conexão com o Códice. Se a tela permanecer preta, tente recarregar.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-3 bg-amber-900/40 hover:bg-amber-800 border border-amber-500 text-amber-200 text-xs font-bold rounded-xl mt-4 transition-all uppercase tracking-widest"
+          >
+            Recarregar Sessão
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   // Helper to map role subtitles exactly matching the gothic mockup
   const getRoleSubtitle = (p: Player, isLeader: boolean): string => {
