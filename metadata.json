@@ -1,0 +1,10 @@
+{
+  "name": "Codice da morte final",
+  "description": "Jogo de investigação e dedução social. Multiplayer com salas privadas por código, modo solo/local com bots IA, 20+ personagens góticos, mesa 2D interativa e cartões com arte temática.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
