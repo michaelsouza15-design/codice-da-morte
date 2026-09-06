@@ -1239,6 +1239,7 @@ export const InvestigationRoomView: React.FC<InvestigationRoomViewProps> = ({
                   Ver todos
                 </button>
               </div>
+            ) : (
               /* Players List */
               <div className="space-y-1.5 max-h-[110px] sm:max-h-[150px] lg:max-h-[380px] overflow-y-auto pr-1 no-scrollbar">
                 {room.players.map((player, idx) => {
