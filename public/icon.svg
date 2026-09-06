@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#3a1b10" />
+      <stop offset="60%" stop-color="#140803" />
+      <stop offset="100%" stop-color="#070301" />
+    </radialGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700" />
+      <stop offset="50%" stop-color="#d4af37" />
+      <stop offset="100%" stop-color="#aa7c11" />
+    </linearGradient>
+    <linearGradient id="bloodGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff4444" />
+      <stop offset="100%" stop-color="#880000" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="512" height="512" rx="96" fill="url(#bgGrad)" stroke="#d4af37" stroke-width="6" stroke-opacity="0.6"/>
+
+  <!-- Ornate Border Corner Accents -->
+  <path d="M40 96 C40 60, 60 40, 96 40 L120 40 L120 48 L96 48 C68 48, 48 68, 48 96 Z" fill="url(#goldGrad)" opacity="0.8"/>
+  <path d="M472 96 C472 60, 452 40, 416 40 L392 40 L392 48 L416 48 C444 48, 464 68, 464 96 Z" fill="url(#goldGrad)" opacity="0.8"/>
+  <path d="M40 416 C40 452, 60 472, 96 472 L120 472 L120 464 L96 464 C68 464, 48 444, 48 416 Z" fill="url(#goldGrad)" opacity="0.8"/>
+  <path d="M472 416 C472 452, 452 472, 416 472 L392 472 L392 464 L416 464 C444 464, 464 444, 464 416 Z" fill="url(#goldGrad)" opacity="0.8"/>
+
+  <!-- Mystical Sigil Circle -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-dasharray="8,6" opacity="0.4"/>
+  <circle cx="256" cy="256" r="160" fill="none" stroke="url(#bloodGrad)" stroke-width="3" opacity="0.5"/>
+
+  <!-- Open Book Codex Silhouette -->
+  <path d="M256 360 C210 330 140 335 90 350 L90 230 C140 215 210 210 256 240 C302 210 372 215 422 230 L422 350 C372 335 302 330 256 360 Z" fill="#1c0f08" stroke="url(#goldGrad)" stroke-width="4" opacity="0.9"/>
+  <line x1="256" y1="240" x2="256" y2="360" stroke="url(#goldGrad)" stroke-width="3"/>
+
+  <!-- Skull Icon in Center -->
+  <g transform="translate(256, 210) scale(1.3)" filter="url(#glow)">
+    <!-- Skull Cranium -->
+    <path d="M-40 -40 C-40 -80, 40 -80, 40 -40 C40 -20, 32 0, 24 15 L20 35 L-20 35 L-24 15 C-32 0, -40 -20, -40 -40 Z" fill="#e8dfd8" stroke="#aa7c11" stroke-width="3"/>
+    <!-- Eye Sockets with Crimson Glow -->
+    <circle cx="-16" cy="-35" r="10" fill="#660000"/>
+    <circle cx="-16" cy="-35" r="6" fill="#ff2222"/>
+    <circle cx="16" cy="-35" r="10" fill="#660000"/>
+    <circle cx="16" cy="-35" r="6" fill="#ff2222"/>
+    <!-- Nose cavity -->
+    <polygon points="0,-18 -5,-8 5,-8" fill="#140803"/>
+    <!-- Teeth division -->
+    <line x1="-12" y1="22" x2="-12" y2="35" stroke="#605550" stroke-width="2"/>
+    <line x1="0" y1="20" x2="0" y2="35" stroke="#605550" stroke-width="2"/>
+    <line x1="12" y1="22" x2="12" y2="35" stroke="#605550" stroke-width="2"/>
+    <line x1="-20" y1="26" x2="20" y2="26" stroke="#605550" stroke-width="2"/>
+  </g>
+
+  <!-- Blood Red Gem / Seal at bottom center -->
+  <polygon points="256,410 274,435 256,460 238,435" fill="url(#bloodGrad)" stroke="#ffd700" stroke-width="2" filter="url(#glow)"/>
+</svg>

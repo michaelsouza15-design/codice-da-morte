@@ -1,0 +1,19 @@
+{
+  "short_name": "Códice da Morte",
+  "name": "O Códice da Morte • Investigação Gótica 3D",
+  "description": "Jogo de dedução social e mistério gótico 3D na biblioteca ancestral com suporte a salas multiplayer online e local.",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#0a0502",
+  "background_color": "#0a0502",
+  "categories": ["games", "entertainment"]
+}
